@@ -1,6 +1,6 @@
 class Fibonacci:
-    def __init__(self, upper):
-        self.upper = upper
+    def __init__(self, limit):
+        self.limit = limit
         self.numbers = []
 
     def run(self):
@@ -10,7 +10,7 @@ class Fibonacci:
         i = 2
         while True:
             f2 = f0 + f1
-            if f2 <= self.upper:
+            if f2 <= self.limit:
                 self.numbers.append(f2)
                 i += 1
                 f0 = f1
@@ -20,6 +20,21 @@ class Fibonacci:
 
         return self.numbers
 
+    def even_sum(self):
+        even_sum = 0
+        f0 = 0
+        f1 = 1
+        i = 2
+        while True:
+            f2 = f0 + f1
+            if f2 <= self.limit:
+                if f2 % 2 == 0:
+                    even_sum += f2
+                i += 1
+                f0 = f1
+                f1 = f2
+            else:
+                return even_sum
 
-fibonacci = Fibonacci(100)
-print(fibonacci.run())
+
+print(Fibonacci(4000000).even_sum())

@@ -25,5 +25,5 @@ class PrimeFactor:
         return self.answer
 
 
-number = PrimeFactor(99999999)
+number = PrimeFactor(4757)
 print(PrimeFactor.run(number))

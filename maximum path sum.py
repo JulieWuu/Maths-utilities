@@ -1,19 +1,19 @@
 class TrianglePath:
-    def __init__(self, path):
-        processed_f = open('processed_file', 'a+')
-        with open(path, 'r') as file:
-            for line in file.readlines():
-                processed_f.writelines(line)
-                processed_f.seek(0)
-        self.lines = processed_f.readlines()
-        processed_f.close()
+    def __init__(self, file):
+        self.file = []
+        with open(file, 'r') as f:
+            for line in f.readlines():
+                self.file.append([])
+                for num in line.split():
+                    self.file[-1].append(int(num))
+        self.file.reverse()
+        print(self.file)
 
     def run(self):
-        print(self.lines)
-        # for i, line in enumerate(self.lines):
-            # for j in line.split():
-                # pass
+        for i in range(1, len(self.file)):
+            for j in range(len(self.file[i])):
+                self.file[i][j] += max(self.file[i - 1][j], self.file[i - 1][j + 1])
+        return self.file[-1][0]
 
 
-path = TrianglePath('max_path_file.txt')
-TrianglePath.run(path)
+print(TrianglePath('0067_triangle.txt').run())

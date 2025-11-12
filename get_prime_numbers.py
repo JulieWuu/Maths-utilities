@@ -25,5 +25,5 @@ class PrimeNumber:
         return self.answer
 
 
-bound = PrimeNumber(99999900, 100000000)
+bound = PrimeNumber(100, 1000)
 print(bound.run())
